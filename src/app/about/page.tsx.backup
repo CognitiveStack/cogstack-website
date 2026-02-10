@@ -1,6 +1,6 @@
 import { Metadata } from "next";
+import { Team } from "@/components/about/Team";
 import { Founder } from "@/components/about/Founder";
-import { Partner } from "@/components/about/Partner";
 import { Approach } from "@/components/about/Approach";
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function AboutPage() {
       </section>
 
       <Founder />
-      <Partner />
+      <Team />
       <Approach />
     </>
   );

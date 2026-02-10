@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-export function Founder() {
+export function Partner() {
   return (
-    <section className="py-16 sm:py-20">
+    <section className="py-16 sm:py-20 bg-muted/30">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl text-center mb-12">
-          The Founder
+          Strategic Partner
         </h2>
         
         <div className="mx-auto max-w-3xl">
@@ -14,8 +14,8 @@ export function Founder() {
             <div className="flex-shrink-0">
               <div className="relative w-32 h-32 sm:w-40 sm:h-40">
                 <Image
-                  src="/images/charles-headshot.png"
-                  alt="Charles Vosloo"
+                  src="/images/claire-headshot.png"
+                  alt="Claire Shuttleworth"
                   fill
                   className="object-cover rounded-full"
                   priority
@@ -26,29 +26,23 @@ export function Founder() {
             {/* Bio */}
             <div className="flex-1">
               <h3 className="text-2xl font-bold text-foreground mb-1">
-                Charles Vosloo
+                Claire Shuttleworth
               </h3>
               <p className="text-lg text-muted-foreground mb-4">
-                Founder & Lead Engineer
+                Strategic Partnerships Lead, Shuttleworth Academy
               </p>
               
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  With a background spanning DevOps engineering to AI infrastructure, distributes 
-                  systems, and architecting and integrating complex systems that actually work in 
-                  production.
+                  Claire brings years of IT experience to forge strategic collaborations between 
+                  business and emerging technology. She specializes in identifying AI-powered 
+                  solutions that deliver tangible value in government procurement and business intelligence.
                 </p>
                 
                 <p>
-                  Today, I run a self-hosted environment with <strong>33+ integrated services</strong> — from vector 
-                  databases to workflow automation — proving that sophisticated AI infrastructure 
-                  doesn't require massive cloud/SaaS or vendor lock in.
-                </p>
-                
-                <p>
-                  Based in Johannesburg, I focus on helping South African enterprises deploy AI 
-                  systems that run production-grade from day one. No prototypes that fall at scale. No 
-                  demos that can't handle real data.
+                  Her partnership with CogStack demonstrates practical AI applications through the 
+                  Tender Intelligence System (TTIS), helping organizations navigate digital transformation 
+                  with confidence.
                 </p>
               </div>
             </div>
