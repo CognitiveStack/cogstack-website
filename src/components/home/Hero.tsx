@@ -35,13 +35,13 @@ export function Hero() {
           {/* CTAs */}
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button asChild size="lg" className="gap-2">
-              <Link href="/contact">
-                Get in Touch
+              <a href="https://tender.cogstack.co.za" target="_blank" rel="noopener noreferrer">
+                Tender Intelligence Platform
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </a>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/about">Learn More</Link>
+              <Link href="/contact">Get in Touch</Link>
             </Button>
           </div>
 

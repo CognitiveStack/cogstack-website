@@ -9,6 +9,7 @@ const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
+  { name: "Tender Platform", href: "https://tender.cogstack.co.za", external: true },
 ];
 
 export function Header() {
@@ -46,6 +47,8 @@ export function Header() {
             <Link
               key={item.name}
               href={item.href}
+              target={item.external ? "_blank" : undefined}
+              rel={item.external ? "noopener noreferrer" : undefined}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
             >
               {item.name}
@@ -54,7 +57,12 @@ export function Header() {
         </div>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-3">
+          <Button asChild variant="outline">
+            <a href="https://tender.cogstack.co.za/login" target="_blank" rel="noopener noreferrer">
+              Sign In
+            </a>
+          </Button>
           <Button asChild>
             <Link href="/contact">Get in Touch</Link>
           </Button>
@@ -75,7 +83,12 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
-            <div className="pt-2">
+            <div className="pt-2 flex flex-col gap-2">
+              <Button asChild variant="outline" className="w-full">
+                <a href="https://tender.cogstack.co.za/login" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>
+                  Sign In to Tender Platform
+                </a>
+              </Button>
               <Button asChild className="w-full">
                 <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
                   Get in Touch

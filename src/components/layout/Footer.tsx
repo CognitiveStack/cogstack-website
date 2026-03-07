@@ -44,6 +44,16 @@ export function Footer() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <a
+                  href="https://tender.cogstack.co.za"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-foreground"
+                >
+                  Tender Platform (CTIS)
+                </a>
+              </li>
             </ul>
           </div>
 
