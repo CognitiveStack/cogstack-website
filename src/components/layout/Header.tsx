@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
+  { name: "Products", href: "/products" },
   { name: "Contact", href: "/contact" },
   { name: "Tender Platform", href: "https://tender.cogstack.co.za", external: true },
 ];
