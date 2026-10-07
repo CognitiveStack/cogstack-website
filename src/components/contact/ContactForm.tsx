@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema, type ContactFormData } from "@/lib/validations";
@@ -9,9 +9,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { CheckCircle, Loader2 } from "lucide-react";
+import { Turnstile } from "@/components/contact/Turnstile";
 
 export function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [turnstileReset, setTurnstileReset] = useState(0);
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const {
     register,
@@ -29,15 +34,45 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // Simulate network delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    setSubmitError(null);
 
-    // Log form data (MVP - no actual email sending)
-    console.log("Contact form submission:", data);
+    if (!turnstileToken) {
+      setSubmitError("Please complete the spam check below the message.");
+      return;
+    }
 
-    // Show success state
-    setIsSubmitted(true);
-    reset();
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          ...data,
+          turnstileToken,
+          website: honeypotRef.current?.value ?? "",
+        }),
+      });
+      const result = (await res.json().catch(() => null)) as
+        | { ok: boolean; error?: string }
+        | null;
+
+      if (!res.ok || !result?.ok) {
+        setSubmitError(
+          result?.error ??
+            "Sorry, your message could not be sent. Please email charles@cogstack.co.za.",
+        );
+        return;
+      }
+
+      setIsSubmitted(true);
+      reset();
+    } catch {
+      setSubmitError(
+        "Network error — please try again, or email charles@cogstack.co.za.",
+      );
+    } finally {
+      // A Turnstile token can only be used once; get a fresh one either way.
+      setTurnstileReset((n) => n + 1);
+    }
   };
 
   if (isSubmitted) {
@@ -67,7 +102,7 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-6 rounded-lg border border-border bg-background p-6 sm:p-8"
+      className="relative space-y-6 rounded-lg border border-border bg-background p-6 sm:p-8"
     >
       {/* Name field */}
       <div className="space-y-2">
@@ -135,6 +170,28 @@ export function ContactForm() {
           <p className="text-sm text-red-500">{errors.message.message}</p>
         )}
       </div>
+
+      {/* Honeypot: hidden from people, tempting for bots */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          ref={honeypotRef}
+        />
+      </div>
+
+      {/* Spam protection */}
+      <Turnstile onToken={setTurnstileToken} resetKey={turnstileReset} />
+
+      {submitError && (
+        <p role="alert" className="text-sm text-red-500">
+          {submitError}
+        </p>
+      )}
 
       {/* Submit button */}
       <Button type="submit" className="w-full" disabled={isSubmitting}>

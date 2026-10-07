@@ -1,9 +1,34 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cogstack-website",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-10-07",
+
+  // Static site (Next.js export). The Worker script only runs for /api/*.
   "assets": {
-    "directory": "./out"
+    "directory": "./out",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
   },
-  "previews": {}
+
+  // Contact form → Mailgun (sending domain mail.cogstack.co.za, US region).
+  // Secrets (not in this file): MAILGUN_API_KEY, TURNSTILE_SECRET_KEY
+  //   production: npx wrangler secret put <NAME>
+  //   previews:   npx wrangler preview base-config secret put <NAME>
+  "vars": {
+    "MAILGUN_DOMAIN": "mail.cogstack.co.za",
+    "MAILGUN_API_BASE": "https://api.mailgun.net",
+    "CONTACT_FROM": "CogStack Website <website@mail.cogstack.co.za>",
+    "CONTACT_TO": "charles@cogstack.co.za"
+  },
+
+  // Previews do not inherit production settings — repeat what they need here.
+  "previews": {
+    "vars": {
+      "MAILGUN_DOMAIN": "mail.cogstack.co.za",
+      "MAILGUN_API_BASE": "https://api.mailgun.net",
+      "CONTACT_FROM": "CogStack Website <website@mail.cogstack.co.za>",
+      "CONTACT_TO": "charles@cogstack.co.za"
+    }
+  }
 }
