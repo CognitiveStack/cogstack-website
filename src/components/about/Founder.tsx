@@ -34,21 +34,28 @@ export function Founder() {
 
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  With a background spanning DevOps engineering to AI infrastructure, distributes
-                  systems, and architecting and integrating complex systems that actually work in
-                  production.
+                  My background is in DevOps engineering — Kubernetes, containers and
+                  distributed systems — and I&apos;ve spent years building and integrating
+                  complex systems that actually work in production.
                 </p>
 
                 <p>
-                  Today, I run a self-hosted environment with <strong>33+ integrated services</strong> — from vector
-                  databases to workflow automation — proving that sophisticated AI infrastructure
-                  doesn&apos;t require massive cloud/SaaS or vendor lock in.
+                  Today I run CogStack&apos;s self-hosted AI stack: <strong>33+ integrated services</strong>,
+                  from vector databases to workflow automation — proving that sophisticated AI
+                  infrastructure doesn&apos;t require massive cloud/SaaS spend or vendor lock-in.
                 </p>
 
                 <p>
-                  Based in Johannesburg, I focus on helping South African enterprises deploy AI
-                  systems that run production-grade from day one. No prototypes that fall at scale. No
-                  demos that can&apos;t handle real data.
+                  More recently I&apos;ve been bringing that same infrastructure thinking to
+                  architecture, engineering and construction (AEC) — working as a BIM Manager and
+                  building AI-assisted, automated BIM workflows as an Autodesk Developer Network
+                  member.
+                </p>
+
+                <p>
+                  Based in Johannesburg, I help South African enterprises deploy AI systems that
+                  are production-grade from day one. No prototypes that fail at scale. No demos
+                  that can&apos;t handle real data.
                 </p>
               </div>
             </div>
