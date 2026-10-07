@@ -29,20 +29,24 @@ export function Partner() {
                 Claire Shuttleworth
               </h3>
               <p className="text-lg text-muted-foreground mb-4">
-                Strategic Partnerships Lead, Shuttleworth Academy
+                Partner — Tender Intelligence Platform (CTIS)
               </p>
               
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Claire brings years of IT experience to forge strategic collaborations between 
-                  business and emerging technology. She specializes in identifying AI-powered 
-                  solutions that deliver tangible value in government procurement and business intelligence.
+                  Claire is CogStack&apos;s partner on the Tender Intelligence Platform at
+                  tender.cogstack.co.za. She bridges business, domain and technical
+                  perspectives — translating complex needs into clear, build-ready solution
+                  designs so teams deliver the right solution, not just a technically correct one.
                 </p>
-                
+
                 <p>
-                  Her partnership with CogStack demonstrates practical AI applications through the 
-                  Tender Intelligence System (TTIS), helping organizations navigate digital transformation 
-                  with confidence.
+                  Much of her career has been in healthcare, where complexity is high and impact
+                  is human. She works closely with developers, analysts and stakeholders —
+                  challenging assumptions, reducing ambiguity and supporting strong engineering
+                  decisions. For Claire, AI is one tool among many: valuable where it genuinely
+                  improves decisions and outcomes, and always part of a wider system of people,
+                  processes, data and trust.
                 </p>
               </div>
             </div>
